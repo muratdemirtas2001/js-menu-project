@@ -90,6 +90,34 @@ const container= document.querySelector('.btn-container');
 //load items
 window.addEventListener("DOMContentLoaded", ()=>{
   displayMenuItems(menu);
+  displayMenuButtons();
+  
+});
+
+
+
+const displayMenuItems=(menuItems)=>{
+  let displayMenu=menuItems.map((item)=>{
+    // console.log(item);
+    return `<article class="menu-item">
+    <img src="${item.img}" class="photo" alt=${item.title}>
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="price">£${item.price}</h4>
+      </header>
+      <p class="item-text">${item.desc}</p>
+    </div>
+  
+  </article>`;
+    });
+    displayMenu=displayMenu.join("");
+    sectionCenter.innerHTML=displayMenu;
+    // console.log(sectionCenter)
+    // console.log(displayMenu)
+}
+
+const displayMenuButtons=()=>{
   const categories=menu.reduce((values,item)=>{
     if(!values.includes(item.category)){
       values.push(item.category)
@@ -126,27 +154,5 @@ filterBtns.forEach((btn)=>{
   })
 })
 
-});
 
-
-
-const displayMenuItems=(menuItems)=>{
-  let displayMenu=menuItems.map((item)=>{
-    // console.log(item);
-    return `<article class="menu-item">
-    <img src="${item.img}" class="photo" alt=${item.title}>
-    <div class="item-info">
-      <header>
-        <h4>${item.title}</h4>
-        <h4 class="price">£${item.price}</h4>
-      </header>
-      <p class="item-text">${item.desc}</p>
-    </div>
-  
-  </article>`;
-    });
-    displayMenu=displayMenu.join("");
-    sectionCenter.innerHTML=displayMenu;
-    // console.log(sectionCenter)
-    // console.log(displayMenu)
 }
